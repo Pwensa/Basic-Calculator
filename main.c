@@ -1,33 +1,36 @@
 #include <stdio.h>
 #include <math.h>
-void PPCM(double valeur1,double valeur2){
-    double valeur1a = valeur1;
-    double valeur2a = valeur2;
-    double rst = fmod(valeur1,valeur2);
+
+//Least common divisor
+void LCM(double value1,double value2){
+    double value1a = value1;
+    double value2a = value2;
+    double rst = fmod(value1,value2);//rest
     while (rst != 0){
     
-        valeur1 = valeur2;
-        valeur2 = rst;
-        rst = fmod(valeur1,valeur2);
+        value1 = value2;
+        value2 = rst;
+        rst = fmod(value1,value2);
         }
-    double multiple = valeur1a * valeur2a / valeur2;
+    double multiple = value1a * value2a / value2;
     printf("%lf\n", multiple);
 
 }
-void PGCD(double valeur1,double valeur2){
-    double rt = fmod(valeur1,valeur2);
-    while (rt != 0){
+//Greatest common divisor
+void GCD(double value1,double value2){
+    double rest = fmod(value1,value2);
+    while (rest != 0){
     
-        valeur1 = valeur2;
-        valeur2 = rt;
-        rt = fmod(valeur1,valeur2);
+        value1 = value2;
+        value2 = rest;
+        rest = fmod(value1,value2);
         }
-    printf("%lf\n",valeur2);
+    printf("%lf\n",value2);
 }
-void factorielle(double valeur1){
-    double fact = 1;
+void factorial(double value1){
+    double fact = 1;//factorial
 
-    for(int i = 1;i <= valeur1; i++){
+    for(int i = 1;i <= value1; i++){
         fact *= i;
     }
     printf("%lf\n",fact);
@@ -35,43 +38,41 @@ void factorielle(double valeur1){
 }
 
 int main(void){
-    double valeur1;
-    double valeur2;
-    char operande;
+    double value1;
+    double value2;
+    char operand;
 
-    scanf("%lf %c %lf", &valeur1,&operande, &valeur2);
+    scanf("%lf %c %lf", &value1,&operand, &value2);
     
 
-    switch (operande)
+    switch (operand)
     {
     case '+':
-        printf("%lf\n",valeur1 + valeur2);
+        printf("%lf\n",value1 + value2);
         break;
     case '-':
-        printf("%lf\n",valeur1 - valeur2);
+        printf("%lf\n",value1 - value2);
         break;
     case '*':
-        printf("%lf\n",valeur1 * valeur2);
+        printf("%lf\n",value1 * value2);
         break;
     case '/':
-        printf("%lf\n",valeur1 / valeur2);
+        printf("%lf\n",value1 / value2);
         break;
     case '%':
-        printf("%lf\n",fmod(valeur1,valeur2));
+        printf("%lf\n",fmod(value1,value2));
         break;
     case '^':
-        printf("%lf\n",pow(valeur1,valeur2));
+        printf("%lf\n",pow(value1,value2));
         break;
     case '!':
-        factorielle(valeur1);
+        factorial(value1);
         break;
     case 'g':
-        PGCD(valeur1, valeur2);
+        GCD(value1,value2);
         break;
-    case 'p':
-        PPCM(valeur1, valeur2);
+    case 'l':
+        LCM(value1,value2);
         break;
-    
     }
-    
 }
